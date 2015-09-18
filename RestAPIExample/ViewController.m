@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "WeatherViewController.h"
-#import "AFHTTPRequestOperationManager.h"
+#import "AFNetworking.h"
 
 
 
@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *weatherSummary;
 
 @property (nonatomic, strong) NSDictionary *current_obs;
-@property (nonatomic, strong) NSString *tempature;
+@property (nonatomic, strong) NSString *temperature;
 @property (nonatomic, strong) NSString *clouds;
 
 @end
@@ -37,11 +37,7 @@
 
 
 - (IBAction)tappedHowIsWeather:(id)sender {
-    NSString *str = @"Currently, in ";
-    str = [str stringByAppendingString:_currentCity.text];
-    str = [str stringByAppendingString:@", "];
-    str = [str stringByAppendingString:_currentState.text];
-    str = [str stringByAppendingString:@", it is "];
+    
     
     NSArray *citySpaceDelimited = [_currentCity.text componentsSeparatedByString:@" "];
     
@@ -63,16 +59,27 @@
     
     
     cityStateUrlPartial = [cityStateUrlPartial stringByAppendingString:@".json"];
-    
-    
-    
+    NSLog(@"%@", cityStateUrlPartial);
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:cityStateUrlPartial parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"JSON: %@", responseObject);
-        
+        NSString *str = @"Currently, in ";
+        str = [str stringByAppendingString:_currentCity.text];
+        str = [str stringByAppendingString:@", "];
+        str = [str stringByAppendingString:_currentState.text];
+        str = [str stringByAppendingString:@", it is "];
         _current_obs = [responseObject objectForKey:@"current_observation"];
-//        _tempature = [_current_obs objectForKey:@"temp_f"];
-//        _clouds =
+        double degrees = [_current_obs objectForKey:@"temp_f"];
+        _temperature = [NSString stringWithFormat:@"%f", ];
+        _clouds = [_current_obs objectForKey:@"weather"];
+        
+        str = [str stringByAppendingString:_clouds];
+    
+        str = [str stringByAppendingString:@" and "];
+        
+        str = [str stringByAppendingString:_temperature];
+        str = [str stringByAppendingString:@" degrees!"];
+        _weatherSummary.text = str;
 //        
 //        [_responseTableView reloadData];
         
@@ -88,14 +95,13 @@
     
     
     
-    str = [str stringByAppendingString:[NSString stringWithFormat:@"%@", _current_obs]];
-    
-    str = [str stringByAppendingString:@" and "];
+    //str = [str stringByAppendingString:_clouds];
     
     
     
-    str = [str stringByAppendingString:@" degrees!"];
-    _weatherSummary.text = str;
+    //str = [str stringByAppendingString:_tempature];
+    
+    
 }
 
 

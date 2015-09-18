@@ -94,7 +94,6 @@
 		7E3AEE7D1BA779B500A36EB4 = {
 			isa = PBXGroup;
 			children = (
-				7E3AEEB21BA7887800A36EB4 /* AFNetworking */,
 				7E3AEE881BA779B600A36EB4 /* RestAPIExample */,
 				7E3AEEA21BA779B700A36EB4 /* RestAPIExampleTests */,
 				7E3AEE871BA779B600A36EB4 /* Products */,
@@ -113,6 +112,7 @@
 		7E3AEE881BA779B600A36EB4 /* RestAPIExample */ = {
 			isa = PBXGroup;
 			children = (
+				7E3AEEB21BA7887800A36EB4 /* AFNetworking */,
 				7E3AEE8D1BA779B600A36EB4 /* AppDelegate.h */,
 				7E3AEE8E1BA779B600A36EB4 /* AppDelegate.m */,
 				7E3AEE901BA779B600A36EB4 /* ViewController.h */,
@@ -176,7 +176,8 @@
 				7E3AEEC41BA7887800A36EB4 /* AFURLSessionManager.h */,
 				7E3AEEC51BA7887800A36EB4 /* AFURLSessionManager.m */,
 			);
-			path = AFNetworking;
+			name = AFNetworking;
+			path = ../AFNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,6 +489,7 @@
 				7E3AEEAB1BA779B700A36EB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7E3AEEAC1BA779B700A36EB4 /* Build configuration list for PBXNativeTarget "RestAPIExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +498,7 @@
 				7E3AEEAE1BA779B700A36EB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
